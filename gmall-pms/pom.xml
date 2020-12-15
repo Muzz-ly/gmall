@@ -7,6 +7,7 @@
         <groupId>com.atguigu</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <groupId>com.atguigu</groupId>
     <artifactId>gmall-pms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gmall-pms</name>
