@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sms-service
+    name: wms-service
   cloud:
     nacos:
       config:
