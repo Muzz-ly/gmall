@@ -36,10 +36,11 @@ public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
 
+    @ApiOperation("根据三级分类id查询分组及组下的规格参数")
     @GetMapping("withattrs/{catId}")
-    public ResponseVo<List<AttrGroupVo>> queryByCid(@PathVariable("catId") Long cid){
-        List<AttrGroupVo> attrGroupVos = attrGroupService.queryByCid(cid);
-        return ResponseVo.ok(attrGroupVos);
+    public ResponseVo<List<AttrGroupEntity>> queryByCid(@PathVariable("catId") Long cid){
+        List<AttrGroupEntity> attrGroupEntities = attrGroupService.queryByCid(cid);
+        return ResponseVo.ok(attrGroupEntities);
     }
 
     @GetMapping("category/{cid}")

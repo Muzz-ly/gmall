@@ -1,7 +1,9 @@
 package com.atguigu.gmall.pms.service.impl;
 
+import com.atguigu.gmall.pms.entity.AttrEntity;
 import com.atguigu.gmall.pms.entity.vo.AttrGroupVo;
-import org.springframework.beans.BeanUtils;
+import com.atguigu.gmall.pms.mapper.AttrMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,10 +19,14 @@ import com.atguigu.gmall.common.bean.PageParamVo;
 import com.atguigu.gmall.pms.mapper.AttrGroupMapper;
 import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.atguigu.gmall.pms.service.AttrGroupService;
+import org.springframework.util.CollectionUtils;
 
 
 @Service("attrGroupService")
 public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupMapper, AttrGroupEntity> implements AttrGroupService {
+
+    @Autowired
+    private AttrMapper attrMapper;
 
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
@@ -33,16 +39,20 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupMapper, AttrGroup
     }
 
     @Override
-    public List<AttrGroupVo> queryByCid(Long cid) {
-        // 查询所有的分组
-        List<AttrGroupEntity> attrGroupEntities = this.
-                list(new QueryWrapper<AttrGroupEntity>().eq("category_id", cid));
-        // 查询出每组下的规格参数
-        return attrGroupEntities.stream().map(attrGroupEntity -> {
-            AttrGroupVo attrGroupVo = new AttrGroupVo();
-            BeanUtils.copyProperties(attrGroupEntities,attrGroupVo);
-            return attrGroupVo;
-        }).collect(Collectors.toList());
+    public List<AttrGroupEntity> queryByCid(Long cid) {
+        //根据分类id查询分组
+        List<AttrGroupEntity> groupEntities = this.
+                list(new QueryWrapper<AttrGroupEntity>().eq("category_id",cid));
+        if (CollectionUtils.isEmpty(groupEntities)){
+            return null;
+        }
+        //遍历分组,查询每个分组下的规格参数
+        groupEntities.forEach(group ->{
+            List<AttrEntity> attrEntities = this.attrMapper.
+                    selectList(new QueryWrapper<AttrEntity>().eq("group_id",group.getId())
+                    .eq("type",1));
+            group.setAttrEntities(attrEntities);
+        });
+        return groupEntities;
     }
-
 }
