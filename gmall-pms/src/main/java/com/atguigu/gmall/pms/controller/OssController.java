@@ -18,8 +18,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("pms/oss")
 public class OssController {
-    String accessId = "LTAI4G93LDBWGTVUgvG5y8H3"; // 请填写您的AccessKeyId。
-    String accessKey = "2vB5zKvNWphel7j3aUWARNNirOiWIg"; // 请填写您的AccessKeySecret。
+    String accessId = "***"; // 请填写您的AccessKeyId。
+    String accessKey = "***"; // 请填写您的AccessKeySecret。
     String endpoint = "oss-cn-shanghai.aliyuncs.com"; // 请填写您的 endpoint。
     String bucket = "muzzly-gmall"; // 请填写您的 bucketname 。
     String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
