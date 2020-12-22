@@ -1,4 +1,4 @@
-package com.atguigu.gmall.pms.config;
+package com.atguigu.gmall.sms.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
@@ -9,7 +9,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
-
+/*
+* **使用mybatis-plus步骤：**
+1. **配置目录中引入映射文件**
+2. **在启动类上添加@MapperScan扫描所有mapper/dao接口**
+3. **编写mapper接口实现BaseMapper<T>即可**
+4. **编写service接口继承IService<T>，编写xxxService继承ServiceImpl<Mapper,  Entity>**
+5. **查询分页要添加分页过滤器：**
+* */
 //Spring boot方式
 @Configuration
 public class MybatisPlusConfig {

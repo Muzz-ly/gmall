@@ -1,6 +1,5 @@
 package com.atguigu.gmall.pms.service;
 
-import com.atguigu.gmall.pms.entity.vo.AttrGroupVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
