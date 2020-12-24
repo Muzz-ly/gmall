@@ -33,6 +33,17 @@ public class SpuController {
     @Autowired
     private SpuService spuService;
 
+    /*
+    * 分页查询已上架SPU
+    * */
+    @PostMapping("page")
+    public ResponseVo<List<SpuEntity>> queryStoreSpuByPage(
+            @RequestBody PageParamVo pageParamVo){
+        PageResultVo page = spuService.queryPage(pageParamVo);
+        List<SpuEntity> pageList = (List<SpuEntity>) page.getList();
+        return ResponseVo.ok(pageList);
+    }
+
     @GetMapping("category/{categoryId}")
     public ResponseVo<PageResultVo> querySpuInfoByCidAndPage(
             @PathVariable("categoryId") Long cid,

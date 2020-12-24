@@ -34,11 +34,18 @@ public class SpuAttrValueController {
     @Autowired
     private SpuAttrValueService spuAttrValueService;
 
+    @ApiOperation("根据spuid查询检索属性及值")
+    @GetMapping("spu/{spuId}")
+    public ResponseVo<List<SpuAttrValueEntity>> querySearchAttrValueBySpuId(@PathVariable("spuId") Long spuId){
+        List<SpuAttrValueEntity> spuAttrValueEntities = spuAttrValueService.querySearchAttrValueBySpuId(spuId);
+        return ResponseVo.ok(spuAttrValueEntities);
+    }
     /**
      * 列表
      */
     @GetMapping
     @ApiOperation("分页查询")
+
     public ResponseVo<PageResultVo> querySpuAttrValueByPage(PageParamVo paramVo){
         PageResultVo pageResultVo = spuAttrValueService.queryPage(paramVo);
 

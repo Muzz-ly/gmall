@@ -8,3 +8,4 @@ spring:
         namespace: 182c014d-e117-44a2-8c75-b523cbae45ac
         group: dev
         file-extension: yml
+        timeout: 10000
