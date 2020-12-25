@@ -14,4 +14,10 @@ spring:
     alibaba:
       seata:
         tx-service-group: gmall-tx-group
-
+  rabbitmq:
+    host: 192.168.24.114
+    virtual-host: muzzly
+    username: admin
+    password: admin
+    publisher-returns: true
+    publisher-confirm-type: correlated
