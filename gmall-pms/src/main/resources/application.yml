@@ -19,5 +19,5 @@ spring:
     virtual-host: muzzly
     username: admin
     password: admin
-    publisher-returns: true
-    publisher-confirm-type: correlated
+    publisher-returns: true # 确认消息是否到达队列
+    publisher-confirm-type: correlated # SIMPLE-同步确认（阻塞） CORRELATED-异步确认

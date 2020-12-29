@@ -30,6 +30,12 @@ public interface GmallPmsApi {
     @GetMapping("pms/skuattrvalue/sku/{skuId}")
     public ResponseVo<List<SkuAttrValueEntity>> querySearchAttrValueBySkuId(@PathVariable("skuId")Long skuId);
 
+    @GetMapping("pms/category/parent/{parentId}")
+    public ResponseVo<List<CategoryEntity>> queryCategoryByPid(@PathVariable("parentId") Long Pid);
+
+    @GetMapping("pms/category/parent/withSub/{pid}")
+    public ResponseVo<List<CategoryEntity>> queryCategoryWithSubByPid(@PathVariable("pid") Long pid);
+
     @GetMapping("pms/spu/{id}")
     @ApiOperation("详情查询")
     public ResponseVo<SpuEntity> querySpuById(@PathVariable("id") Long id);

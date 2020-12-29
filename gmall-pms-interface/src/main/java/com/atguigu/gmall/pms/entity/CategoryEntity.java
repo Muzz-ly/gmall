@@ -1,10 +1,12 @@
 package com.atguigu.gmall.pms.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -49,4 +51,7 @@ public class CategoryEntity implements Serializable {
 	 */
 	private String unit;
 
+	//数据库中不存在的字段,mapper映射的时候不能解析
+	@TableField(exist = false)
+	private List<CategoryEntity> subs;
 }

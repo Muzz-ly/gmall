@@ -38,8 +38,7 @@ public class ItemListener {
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "SEARCH_ITEM_QUEUE",durable = "true"),//durable是否持久化
             exchange = @Exchange(value = "PMS_ITEM_EXCHANGE",ignoreDeclarationExceptions = "true",type = ExchangeTypes.TOPIC),
-            key = {"item.insert"}
-    ))
+            key = {"item.insert"}))
     public void listener(Long spuId){
         if (spuId == null){
             return;

@@ -31,9 +31,10 @@ spring:
     password: admin
     listener:
       simple:
-        prefetch: 1
+        prefetch: 1 # 能者多劳
         acknowledge-mode: manual
-        concurrency: 4
+        concurrency: 3 # 避免消息堆积，初始化多个消费者线程
+      type: simple # simple-listener容器使用一个额外线程处理消息  direct-listener（监听器）容器直接使用consumer线程
 feign:
   sentinel:
     enabled: true

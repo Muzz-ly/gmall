@@ -17,6 +17,9 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>gmall-gateway</module>
+        <module>gmall-search</module>
+        <module>gmall-index</module>
         <module>gmall-admin</module>
         <module>gmall-common</module>
         <module>gmall-sms-interface</module>
